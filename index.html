@@ -43,19 +43,21 @@
             margin: 10px 0;
         }
         .bank-value {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
+            margin-left: 0;
+            margin-top: 5px;
         }
         .copy-btn {
-            flex-shrink: 0;
+            display: block; /* zawsze w nowej linii */
+            margin-top: 5px;
             background-color: #3498db;
             color: white;
             border: none;
             padding: 5px 10px;
             border-radius: 5px;
             cursor: pointer;
+        }
+        .highlight {
+            font-weight: bold; /* pogrubienie nagłówków */
         }
     </style>
 </head>
@@ -82,6 +84,7 @@
             <span class="highlight" id="bank-number-label">Receiver:</span>
             <div class="bank-value">
                 <span id="bank-number-value">Mariia Khokhel</span>
+                <button class="copy-btn" id="bank-number-copy-btn" onclick="copyText('Mariia Khokhel')">Copy</button>
             </div>
         </div>
         <div class="bank-row">
@@ -136,6 +139,7 @@
             document.getElementById('bank-number-label').innerText = texts[lang].bankNumber;
             document.getElementById('iban-label').innerText = texts[lang].iban;
             document.getElementById('swift-label').innerText = texts[lang].swift;
+            document.getElementById('bank-number-copy-btn').innerText = texts[lang].copy;
             document.getElementById('iban-copy-btn').innerText = texts[lang].copy;
             document.getElementById('swift-copy-btn').innerText = texts[lang].copy;
         }
