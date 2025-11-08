@@ -29,15 +29,6 @@
         .highlight {
             font-weight: bold;
         }
-        .copy-btn {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-left: 10px;
-        }
         .flags {
             display: flex;
             gap: 10px;
@@ -53,6 +44,22 @@
         }
         .flags img:hover {
             border-color: #3498db;
+        }
+        .bank-row {
+            display: flex;
+            flex-wrap: wrap; /* pozwala na łamanie linii przy wąskich ekranach */
+            align-items: center;
+            gap: 10px; /* odstęp między tekstem a przyciskiem */
+            margin: 5px 0;
+        }
+        .copy-btn {
+            flex-shrink: 0;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -75,13 +82,17 @@
 
     <!-- Bank details card -->
     <div class="card">
-        <p><span class="highlight" id="bank-number-label">Receiver:</span> Mariia Khokhel</p>
-        <p><span class="highlight" id="iban-label">IBAN:</span> UA743220010000026203370707040
+        <div class="bank-row">
+            <span class="highlight" id="bank-number-label">Receiver:</span> Mariia Khokhel
+        </div>
+        <div class="bank-row">
+            <span class="highlight" id="iban-label">IBAN:</span> UA743220010000026203370707040
             <button class="copy-btn" onclick="copyText('UA743220010000026203370707040')">Copy</button>
-        </p>
-        <p><span class="highlight" id="swift-label">SWIFT:</span> MNASNOB2XXX
+        </div>
+        <div class="bank-row">
+            <span class="highlight" id="swift-label">SWIFT:</span> MNASNOB2XXX
             <button class="copy-btn" onclick="copyText('MNASNOB2XXX')">Copy</button>
-        </p>
+        </div>
     </div>
 
     <script>
