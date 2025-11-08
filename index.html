@@ -23,12 +23,6 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .card p {
-            margin: 10px 0;
-        }
-        .highlight {
-            font-weight: bold;
-        }
         .flags {
             display: flex;
             gap: 10px;
@@ -38,7 +32,7 @@
             width: 50px;
             height: 30px;
             cursor: pointer;
-            border: 1px solid #ccc; /* minimalna obramówka */
+            border: 1px solid #ccc; 
             border-radius: 5px;
             object-fit: cover;
         }
@@ -46,11 +40,13 @@
             border-color: #3498db;
         }
         .bank-row {
+            margin: 10px 0;
+        }
+        .bank-value {
             display: flex;
-            flex-wrap: wrap; /* pozwala na łamanie linii przy wąskich ekranach */
             align-items: center;
-            gap: 10px; /* odstęp między tekstem a przyciskiem */
-            margin: 5px 0;
+            gap: 10px;
+            flex-wrap: wrap;
         }
         .copy-btn {
             flex-shrink: 0;
@@ -83,15 +79,24 @@
     <!-- Bank details card -->
     <div class="card">
         <div class="bank-row">
-            <span class="highlight" id="bank-number-label">Receiver:</span> Mariia Khokhel
+            <span class="highlight" id="bank-number-label">Receiver:</span>
+            <div class="bank-value">
+                <span id="bank-number-value">Mariia Khokhel</span>
+            </div>
         </div>
         <div class="bank-row">
-            <span class="highlight" id="iban-label">IBAN:</span> UA743220010000026203370707040
-            <button class="copy-btn" onclick="copyText('UA743220010000026203370707040')">Copy</button>
+            <span class="highlight" id="iban-label">IBAN:</span>
+            <div class="bank-value">
+                <span id="iban-value">UA743220010000026203370707040</span>
+                <button class="copy-btn" id="iban-copy-btn" onclick="copyText('UA743220010000026203370707040')">Copy</button>
+            </div>
         </div>
         <div class="bank-row">
-            <span class="highlight" id="swift-label">SWIFT:</span> MNASNOB2XXX
-            <button class="copy-btn" onclick="copyText('MNASNOB2XXX')">Copy</button>
+            <span class="highlight" id="swift-label">SWIFT:</span>
+            <div class="bank-value">
+                <span id="swift-value">MNASNOB2XXX</span>
+                <button class="copy-btn" id="swift-copy-btn" onclick="copyText('MNASNOB2XXX')">Copy</button>
+            </div>
         </div>
     </div>
 
@@ -101,32 +106,43 @@
                 main: "The goal is to raise money to buy night vision. They can be provided by the government only for elite structures, like special forces. They are quite expensive. But (a reminder): still save lives.",
                 bankNumber: "Receiver:",
                 iban: "IBAN:",
-                swift: "SWIFT:"
+                swift: "SWIFT:",
+                copy: "Copy",
+                copiedMessage: "Copied to clipboard!"
             },
             uk: {
                 main: "Мета збору коштів – придбати прилади нічного бачення. Вони можуть надаватися урядом лише для елітних структур, як-от спеціальні підрозділи. Вони досить дорогі. Але (нагадаємо): все ще рятують життя.",
                 bankNumber: "Одержувач:",
                 iban: "IBAN:",
-                swift: "SWIFT:"
+                swift: "SWIFT:",
+                copy: "Копіювати",
+                copiedMessage: "Скопійовано у буфер обміну!"
             },
             pl: {
                 main: "Celem zbiórki jest zakup noktowizorów. Mogą być one zapewniane przez rząd tylko dla elitarnych struktur, takich jak siły specjalne. Są dość drogie. Ale (przypomnienie): nadal ratują życie.",
                 bankNumber: "Odbiorca:",
                 iban: "IBAN:",
-                swift: "SWIFT:"
+                swift: "SWIFT:",
+                copy: "Kopiuj",
+                copiedMessage: "Skopiowano do schowka!"
             }
         };
 
+        let currentLang = 'en';
+
         function setLanguage(lang) {
+            currentLang = lang;
             document.getElementById('fundraiser-text').innerText = texts[lang].main;
             document.getElementById('bank-number-label').innerText = texts[lang].bankNumber;
             document.getElementById('iban-label').innerText = texts[lang].iban;
             document.getElementById('swift-label').innerText = texts[lang].swift;
+            document.getElementById('iban-copy-btn').innerText = texts[lang].copy;
+            document.getElementById('swift-copy-btn').innerText = texts[lang].copy;
         }
 
         function copyText(text) {
             navigator.clipboard.writeText(text).then(() => {
-                alert('Copied to clipboard!');
+                alert(texts[currentLang].copiedMessage);
             });
         }
     </script>
