@@ -75,40 +75,42 @@
 
     <!-- Bank details card -->
     <div class="card">
-        <p><span class="highlight" id="bank-number-label">Bank account number:</span> 00 0000 0000 0000 0000 0000 0000
-            <button class="copy-btn" onclick="copyText('00 0000 0000 0000 0000 0000 0000')">Copy</button>
+        <p><span class="highlight" id="bank-number-label">Receiver:</span> Mariia Khokhel</p>
+        <p><span class="highlight" id="iban-label">IBAN:</span> UA743220010000026203370707040
+            <button class="copy-btn" onclick="copyText('UA743220010000026203370707040')">Copy</button>
         </p>
-        <p><span class="highlight" id="transfer-title-label">Transfer title:</span> Donation for fundraiser</p>
-        <p><span class="highlight" id="contact-label">Contact:</span> contact@example.com</p>
+        <p><span class="highlight" id="swift-label">SWIFT:</span> MNASNOB2XXX
+            <button class="copy-btn" onclick="copyText('MNASNOB2XXX')">Copy</button>
+        </p>
     </div>
 
     <script>
         const texts = {
             en: {
                 main: "The goal is to raise money to buy night vision. They can be provided by the government only for elite structures, like special forces. They are quite expensive. But (a reminder): still save lives.",
-                bankNumber: "Bank account number:",
-                transferTitle: "Transfer title:",
-                contact: "Contact:"
+                bankNumber: "Receiver:",
+                iban: "IBAN:",
+                swift: "SWIFT:"
             },
             uk: {
                 main: "Мета збору коштів – придбати прилади нічного бачення. Вони можуть надаватися урядом лише для елітних структур, як-от спеціальні підрозділи. Вони досить дорогі. Але (нагадаємо): все ще рятують життя.",
-                bankNumber: "Номер банківського рахунку:",
-                transferTitle: "Призначення платежу:",
-                contact: "Контакт:"
+                bankNumber: "Одержувач:",
+                iban: "IBAN:",
+                swift: "SWIFT:"
             },
             pl: {
                 main: "Celem zbiórki jest zakup noktowizorów. Mogą być one zapewniane przez rząd tylko dla elitarnych struktur, takich jak siły specjalne. Są dość drogie. Ale (przypomnienie): nadal ratują życie.",
-                bankNumber: "Numer konta bankowego:",
-                transferTitle: "Tytuł przelewu:",
-                contact: "Kontakt:"
+                bankNumber: "Odbiorca:",
+                iban: "IBAN:",
+                swift: "SWIFT:"
             }
         };
 
         function setLanguage(lang) {
             document.getElementById('fundraiser-text').innerText = texts[lang].main;
             document.getElementById('bank-number-label').innerText = texts[lang].bankNumber;
-            document.getElementById('transfer-title-label').innerText = texts[lang].transferTitle;
-            document.getElementById('contact-label').innerText = texts[lang].contact;
+            document.getElementById('iban-label').innerText = texts[lang].iban;
+            document.getElementById('swift-label').innerText = texts[lang].swift;
         }
 
         function copyText(text) {
