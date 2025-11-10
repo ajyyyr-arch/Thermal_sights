@@ -32,7 +32,7 @@
             width: 50px;
             height: 30px;
             cursor: pointer;
-            border: 1px solid #ccc; 
+            border: 1px solid #ccc;
             border-radius: 5px;
             object-fit: cover;
         }
@@ -47,7 +47,7 @@
             margin-top: 5px;
         }
         .copy-btn {
-            display: block; /* zawsze w nowej linii */
+            display: block;
             margin-top: 5px;
             background-color: #3498db;
             color: white;
@@ -57,12 +57,12 @@
             cursor: pointer;
         }
         .highlight {
-            font-weight: bold; /* pogrubienie nagłówków */
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <h1>Fundraiser</h1>
+    <h1 id="page-title">Fundraiser</h1>
 
     <!-- Language selector -->
     <div class="card flags">
@@ -74,7 +74,7 @@
     <!-- Main info card -->
     <div class="card" id="info-card">
         <p id="fundraiser-text">
-            The goal is to raise money to buy night vision. They can be provided by the government only for elite structures, like special forces. They are quite expensive. But (a reminder): still save lives.
+            The goal is to raise money to buy thermal cameras. They are provided by the government only for elite structures, like special forces, while normal soldiers have to buy them out of pocket, even though they are useful and needed on their tasks. Such equipment is normally quite expensive, and this is why I am trying to help my friend and his unit raise money for them.
         </p>
     </div>
 
@@ -106,7 +106,8 @@
     <script>
         const texts = {
             en: {
-                main: "The goal is to raise money to buy night vision. They can be provided by the government only for elite structures, like special forces. They are quite expensive. But (a reminder): still save lives.",
+                title: "Fundraiser",
+                main: "The goal is to raise money to buy thermal cameras. They are provided by the government only for elite structures, like special forces, while normal soldiers have to buy them out of pocket, even though they are useful and needed on their tasks. Such equipment is normally quite expensive, and this is why I am trying to help my friend and his unit raise money for them.",
                 bankNumber: "Receiver:",
                 iban: "IBAN:",
                 swift: "SWIFT:",
@@ -114,7 +115,8 @@
                 copiedMessage: "Copied to clipboard!"
             },
             uk: {
-                main: "Мета збору коштів – придбати прилади нічного бачення. Вони можуть надаватися урядом лише для елітних структур, як-от спеціальні підрозділи. Вони досить дорогі. Але (нагадаємо): все ще рятують життя.",
+                title: "Збір коштів",
+                main: "Мета збору – придбати тепловізори. Держава забезпечує ними лише елітні підрозділи, як-от спецпризначенців, тоді як звичайні солдати мають купувати їх за власний кошт, хоча вони дуже потрібні для виконання завдань. Таке обладнання зазвичай дороге, тому я намагаюся допомогти своєму другові та його підрозділу зібрати кошти на них.",
                 bankNumber: "Одержувач:",
                 iban: "IBAN:",
                 swift: "SWIFT:",
@@ -122,7 +124,8 @@
                 copiedMessage: "Скопійовано у буфер обміну!"
             },
             pl: {
-                main: "Celem zbiórki jest zakup noktowizorów. Mogą być one zapewniane przez rząd tylko dla elitarnych struktur, takich jak siły specjalne. Są dość drogie. Ale (przypomnienie): nadal ratują życie.",
+                title: "Zbiórka",
+                main: "Celem zbiórki jest zakup kamer termowizyjnych. Są one zapewniane przez rząd jedynie elitarnym jednostkom, takim jak siły specjalne, podczas gdy zwykli żołnierze muszą kupować je na własny koszt, mimo że są potrzebne i przydatne w ich zadaniach. Sprzęt tego typu jest dość drogi, dlatego staram się pomóc mojemu przyjacielowi i jego jednostce zebrać na nie środki.",
                 bankNumber: "Odbiorca:",
                 iban: "IBAN:",
                 swift: "SWIFT:",
@@ -135,6 +138,7 @@
 
         function setLanguage(lang) {
             currentLang = lang;
+            document.getElementById('page-title').innerText = texts[lang].title;
             document.getElementById('fundraiser-text').innerText = texts[lang].main;
             document.getElementById('bank-number-label').innerText = texts[lang].bankNumber;
             document.getElementById('iban-label').innerText = texts[lang].iban;
